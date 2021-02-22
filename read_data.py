@@ -1,3 +1,7 @@
+"""
+This file contains 
+"""
+
 import numpy as np
 from PIL import Image
 
@@ -27,7 +31,7 @@ def get_dx_data(dir):
     """
     dx_data = []
     for i in range(1,301): # 400 images in dx database
-        filename = "dor" + "/{:03d}.bmp".format(i) # in folder dx/
+        filename = "dir" + "/{:03d}.bmp".format(i) # in folder dx/
         data = Image.open(filename)
         data = data.convert('L') # originally RGB so convert to grayscale
         data = np.array(data, dtype=np.uint8) # [1935, 2400]
