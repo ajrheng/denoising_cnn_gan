@@ -10,13 +10,13 @@ class mias_dataset(Dataset):
     """
     Dataset class for MIAS (mammogram) data
     """
-    def __init__(self, clean_transform, noise_transform):
+    def __init__(self, dir, clean_transform, noise_transform):
         """
         Args:
             clean_transform: composition of transforms for the clean data
             noise_transform: composition of transforms for the noisy data
         """
-        self.clean_data = get_mias_data()
+        self.clean_data = get_mias_data(dir)
         self.noise_data = np.copy(self.clean_data)
         self.clean_transform = clean_transform
         self.noise_transform = noise_transform
@@ -31,13 +31,13 @@ class dx_dataset(Dataset):
     """
     Dataset class for DX (dental) data
     """
-    def __init__(self, clean_transform, noise_transform):
+    def __init__(self, dir, clean_transform, noise_transform):
         """
         Args:
             clean_transform: composition of transforms for the clean data
             noise_transform: composition of transforms for the noisy data
         """
-        self.clean_data = get_dx_data()
+        self.clean_data = get_dx_data(dir)
         self.noise_data = np.copy(self.clean_data)
         self.clean_transform = clean_transform
         self.noise_transform = noise_transform

@@ -14,7 +14,7 @@ def get_mias_data(dir):
     """
     mias_data = []
     for i in range(1,301): # 300 training images
-        filename = "dir" + "/mdb{:03d}.pgm".format(i) # in folder mias/
+        filename = dir + "/mdb{:03d}.pgm".format(i) # in folder mias/
         data = Image.open(filename)
         data = np.array(data, dtype=np.uint8)
         mias_data.append(np.expand_dims(data, 2)) # make dimensions [1024, 1024, 1]
@@ -31,7 +31,7 @@ def get_dx_data(dir):
     """
     dx_data = []
     for i in range(1,301): # 400 images in dx database
-        filename = "dir" + "/{:03d}.bmp".format(i) # in folder dx/
+        filename = dir + "/{:03d}.bmp".format(i) # in folder dx/
         data = Image.open(filename)
         data = data.convert('L') # originally RGB so convert to grayscale
         data = np.array(data, dtype=np.uint8) # [1935, 2400]
