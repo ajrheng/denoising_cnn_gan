@@ -24,16 +24,15 @@ class cnn_autoencoder(nn.Module):
         self.upsamp5 = nn.Upsample(scale_factor=2) # [64, 32, 32] -> [64, 64, 64]
         self.conv5 = nn.Conv2d(64, 1, 3, padding=1) # [64, 64, 64] -> [1, 64, 64]
 
-        self.dropout =  nn.Dropout()
         
     def forward(self, x):
-        x = self.dropout(self.conv1_bn(F.relu(self.conv1(x))))
+        x = self.conv1_bn(F.relu(self.conv1(x)))
         x = self.pool1(x)
-        x = self.dropout(self.conv2_bn(F.relu(self.conv2(x))))
+        x = self.conv2_bn(F.relu(self.conv2(x)))
         x = self.pool2(x)
-        x = self.dropout(self.conv3_bn(F.relu(self.conv3(x))))
+        x = self.conv3_bn(F.relu(self.conv3(x)))
         x = self.upsamp4(x)
-        x = self.dropout(self.conv4_bn(F.relu(self.conv4(x))))
+        x = self.conv4_bn(F.relu(self.conv4(x)))
         x = self.upsamp5(x)
         x = torch.sigmoid(self.conv5(x)) # convert all outputs to range [0,1]
         return x
