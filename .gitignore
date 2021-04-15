@@ -1,7 +1,6 @@
 **/.ipynb_checkpoints
 **/__pycache__
-**/dx_test_raw
-**/dx_train_raw
-**/mias_test_raw
-**/mias_train_raw
+**/test
+**/train
 **.pt
+Untitled.ipynb
